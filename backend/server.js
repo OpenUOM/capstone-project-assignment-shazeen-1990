@@ -97,7 +97,7 @@ app.post("/getStudentInfo", async function (req, res) {
   res.end(JSON.stringify(data));
 });
 
-app.post("/addStudent", async function (req, res) {
+app.post("/addStudent/:id", async function (req, res) {
   let reqBody = req.body;
   console.log(
     "Request received to add student. Req body: " + JSON.stringify(reqBody)
@@ -125,7 +125,7 @@ app.post("/deleteStudent", async function (req, res) {
   res.end(JSON.stringify(data));
 });
 
-app.put("/editStudent", async function (req, res) {
+app.post("/editStudent/:id", async function (req, res) {
   let reqBody = req.body;
   console.log(
     "Request received to update Student. Req body: " + JSON.stringify(reqBody)
