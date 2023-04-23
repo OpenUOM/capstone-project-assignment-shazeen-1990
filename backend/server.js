@@ -132,7 +132,7 @@ app.post("/editStudent", async function (req, res) {
   console.log(
     "Request received to update Student. Req body: " + JSON.stringify(reqBody)
   );
-  let data = await updateStudent(reqBody.name, reqBody.age, reqBody.id);
+  let data = await updateStudent(reqBody.name, reqBody.age, reqBody.hometown, reqBody.id);
 
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
