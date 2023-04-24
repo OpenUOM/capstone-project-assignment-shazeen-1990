@@ -61,20 +61,34 @@ export class TeacherTableComponent implements OnInit {
   }
 //s
   search(value: string) {
-    let foundItems = [];
-    if (value.trim().length <= 0) {
-      this.getTeacherData();
-    } else {
-      let b = this.teacherData.filter((teacher) => {
-        if( teacher.name.toLowerCase().indexOf(value.toLowerCase()) > -1){
+  let foundItems = [];
+
+  if (value.trim().length <= 0) {
+    this.getTeacherData();
+  } else {
+    let filteredData = this.teacherData.filter((teacher) => {
+      let fullName = `${teacher.firstName} ${teacher.lastName}`.toLowerCase();
+      let searchValue = value.toLowerCase();
+
+      if (fullName.includes(searchValue)) {
+        foundItems.push(teacher);
+        return true;
+      }
+
+      let nameParts = fullName.split(' ');
+      for (let i = 0; i < nameParts.length; i++) {
+        if (nameParts[i].startsWith(searchValue) || nameParts[i].endsWith(searchValue) || nameParts[i].includes(searchValue)) {
           foundItems.push(teacher);
           return true;
         }
-      });
-      
-      this.teacherData = b;
-    }
+      }
+
+      return false;
+    });
+
+    this.teacherData = filteredData;
   }
+}
 
   deleteTeacher(itemid) {
     const test = {
