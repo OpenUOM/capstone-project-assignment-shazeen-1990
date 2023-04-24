@@ -59,7 +59,7 @@ export class TeacherTableComponent implements OnInit {
       console.log('ERROR - ', error)
     })
   }
-
+//s
   search(value: string) {
     let foundItems = [];
     if (value.trim().length <= 0) {
