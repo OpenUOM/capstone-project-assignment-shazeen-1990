@@ -58,7 +58,8 @@ export class StudentTableComponent implements OnInit {
     } else {
        let b = this.studentData.filter((student) => {
         if( student[0].name.toLowerCase().indexOf(value.toLowerCase()) > -1){
-          foundItems.push(student)
+          foundItems.push(student);
+          return true;
         } 
       });
       
