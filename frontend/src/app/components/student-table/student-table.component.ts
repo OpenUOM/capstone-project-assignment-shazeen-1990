@@ -50,20 +50,34 @@ export class StudentTableComponent implements OnInit {
       this.getStudentData()
     })
   }
- //search
+ //searchh
   search(value: string) {
-    let foundItems = [];
-    if (value.trim().length <= 0) {
-      this.getStudentData();
-    } else {
-       let b = this.studentData.filter((student) => {
-        if( student[0].name.toLowerCase().indexOf(value.toLowerCase()) > -1){
+  let foundItems = [];
+
+  if (value.trim().length <= 0) {
+    this.getStudentData();
+  } else {
+    let filteredData = this.studentData.filter((student) => {
+      let fullName = `${student.firstName} ${student.lastName}`.toLowerCase();
+      let searchValue = value.toLowerCase();
+
+      if (fullName.includes(searchValue)) {
+        foundItems.push(student);
+        return true;
+      }
+
+      let nameParts = fullName.split(' ');
+      for (let i = 0; i < nameParts.length; i++) {
+        if (nameParts[i].startsWith(searchValue) || nameParts[i].endsWith(searchValue) || nameParts[i].includes(searchValue)) {
           foundItems.push(student);
           return true;
-        } 
-      });
-      
-      this.studentData = b;
-    }
+        }
+      }
+
+      return false;
+    });
+
+    this.studentData = filteredData;
   }
+}
 }
