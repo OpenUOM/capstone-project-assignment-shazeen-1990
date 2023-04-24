@@ -66,9 +66,7 @@ export class TeacherTableComponent implements OnInit {
       this.getTeacherData();
     } else {
       foundItems = this.teacherData.filter((teacher) => {
-        if (teacher[0].name.toLowerCase().indexOf(value.toLowerCase()) > -1) {
-          foundItems.push(teacher)
-        }
+        return teacher[0].name.toLowerCase().indexOf(value.toLowerCase()) > -1;
       });
       
       this.teacherData = foundItems;
