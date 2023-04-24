@@ -65,12 +65,12 @@ export class TeacherTableComponent implements OnInit {
     if (value.trim().length <= 0) {
       this.getTeacherData();
     } else {
-      let b = this.teacherData.filter((teacher) => {
+      foundItems = this.teacherData.filter((teacher) => {
         if (teacher[0].name.toLowerCase().indexOf(value.toLowerCase()) > -1) {
           foundItems.push(teacher)
         }
       });
-      foundItems = b;
+      
       this.teacherData = foundItems;
     }
   }
