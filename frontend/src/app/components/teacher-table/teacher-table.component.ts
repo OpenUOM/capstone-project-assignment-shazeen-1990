@@ -64,7 +64,7 @@ export class TeacherTableComponent implements OnInit {
   let foundItems = [];
 
   if (value.trim().length <= 0) {
-    this.getTeacherData();
+    this.teacherData = this.getTeacherData();
   } else {
     let filteredData = this.teacherData.filter((teacher) => {
       let fullName = `${teacher.firstName} ${teacher.lastName}`.toLowerCase();
