@@ -8,6 +8,7 @@ actions: read
 contents: read
 
 jobs:
+  build:
   name: Autograding
 
 runs-on: ubuntu-latest
