@@ -2,8 +2,6 @@ name: GitHub Classroom Workflow
 
 on: [push]
 
-on: [push]
-
 permissions:
   checks: write
   actions: read
