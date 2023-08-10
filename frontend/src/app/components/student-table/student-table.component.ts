@@ -51,11 +51,11 @@ export class StudentTableComponent implements OnInit {
     })
   }
  //search
-  search(value: string) {
+ search(value: string) {
   let foundItems = [];
 
   if (value.trim().length <= 0) {
-    this.studentData=this.getStudentData();
+    this.getStudentData();
   } else {
     let filteredData = this.studentData.filter((student) => {
       let fullName = `${student.firstName} ${student.lastName}`.toLowerCase();
@@ -79,5 +79,5 @@ export class StudentTableComponent implements OnInit {
 
     this.studentData = filteredData;
   }
-}
+ }
 }

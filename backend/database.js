@@ -174,4 +174,3 @@ module.exports = {
     updateStudent,
     updateTeacher
 };
-

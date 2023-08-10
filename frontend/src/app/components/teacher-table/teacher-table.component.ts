@@ -64,7 +64,7 @@ export class TeacherTableComponent implements OnInit {
   let foundItems = [];
 
   if (value.trim().length <= 0) {
-    this.teacherData = this.getTeacherData();
+    this.getTeacherData();
   } else {
     let filteredData = this.teacherData.filter((teacher) => {
       let fullName = `${teacher.firstName} ${teacher.lastName}`.toLowerCase();
@@ -88,14 +88,5 @@ export class TeacherTableComponent implements OnInit {
 
     this.teacherData = filteredData;
   }
-}
-
-  deleteTeacher(itemid) {
-    const test = {
-      id: itemid
-    }
-    this.service.deleteTeacher(test).subscribe((response) => {
-      this.getTeacherData()
-    })
-  }
+ }
 }
