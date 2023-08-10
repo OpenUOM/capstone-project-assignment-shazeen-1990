@@ -12,7 +12,7 @@ jobs:
     name: Autograding
     runs-on: ubuntu-latest
     steps:
-    with:
+    
     node-version: 16
       - uses: actions/setup-node@v3
       - uses: actions/checkout@v2
