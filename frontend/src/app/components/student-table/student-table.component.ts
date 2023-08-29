@@ -42,42 +42,35 @@ export class StudentTableComponent implements OnInit {
     })
   }
 
-  deleteStudent(itemid){
-    const student = {
+  // deleteStudent(itemid){
+  //   const student = {
+  //     id: itemid
+  //   }
+  //   this.service.deleteStudent(student).subscribe((response)=>{
+  //     this.getStudentData()
+  //   })
+  // }
+ //search
+ search(value) {
+    let foundItems = [];
+    if (value.length <= 0) {
+      this.getStudentData();
+    } else {
+      let b = this.studentData.filter((student) => {
+        if (student[0].name.toLowerCase().indexOf(value) > -1) {
+          foundItems.push(student)
+        }
+      });
+      this.studentData = foundItems;
+    }
+  }
+
+  deleteStudent(itemid) {
+    const test = {
       id: itemid
     }
-    this.service.deleteStudent(student).subscribe((response)=>{
+    this.service.deleteStudent(test).subscribe((response) => {
       this.getStudentData()
     })
   }
- //search
- search(value: string) {
-  let foundItems = [];
-
-  if (value.trim().length <= 0) {
-    this.getStudentData();
-  } else {
-    let filteredData = this.studentData.filter((student) => {
-      let fullName = `${student.firstName} ${student.lastName}`.toLowerCase();
-      let searchValue = value.toLowerCase();
-
-      if (fullName.includes(searchValue)) {
-        foundItems.push(student);
-        return true;
-      }
-
-      let nameParts = fullName.split(' ');
-      for (let i = 0; i < nameParts.length; i++) {
-        if (nameParts[i].startsWith(searchValue) || nameParts[i].endsWith(searchValue) || nameParts[i].includes(searchValue)) {
-          foundItems.push(student);
-          return true;
-        }
-      }
-
-      return false;
-    });
-
-    this.studentData = filteredData;
-  }
- }
 }
