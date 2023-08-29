@@ -51,42 +51,35 @@ export class TeacherTableComponent implements OnInit {
     })
   }
 
-  getStudentData() {
-    this.selected = 'Students';
-    this.service.getStudentData().subscribe((response) => {
-      this.teacherData = response;
-    }, (error) => {
-      console.log('ERROR - ', error)
+  // getStudentData() {
+  //   this.selected = 'Students';
+  //   this.service.getStudentData().subscribe((response) => {
+  //     this.teacherData = response;
+  //   }, (error) => {
+  //     console.log('ERROR - ', error)
+  //   })
+  // }
+//s
+   search(value) {
+    let foundItems = [];
+    if (value.length <= 0) {
+      this.getTeacherData();
+    } else {
+      let b = this.teacherData.filter((teacher) => {
+        if (teacher[0].name.toLowerCase().indexOf(value) > -1) {
+          foundItems.push(teacher)
+        }
+      });
+      this.teacherData = foundItems;
+    }
+  }
+
+  deleteTeacher(itemid) {
+    const test = {
+      id: itemid
+    }
+    this.service.deleteTeacher(test).subscribe((response) => {
+      this.getTeacherData()
     })
   }
-//s
-  search(value: string) {
-  let foundItems = [];
-
-  if (value.trim().length <= 0) {
-    this.getTeacherData();
-  } else {
-    let filteredData = this.teacherData.filter((teacher) => {
-      let fullName = `${teacher.firstName} ${teacher.lastName}`.toLowerCase();
-      let searchValue = value.toLowerCase();
-
-      if (fullName.includes(searchValue)) {
-        foundItems.push(teacher);
-        return true;
-      }
-
-      let nameParts = fullName.split(' ');
-      for (let i = 0; i < nameParts.length; i++) {
-        if (nameParts[i].startsWith(searchValue) || nameParts[i].endsWith(searchValue) || nameParts[i].includes(searchValue)) {
-          foundItems.push(teacher);
-          return true;
-        }
-      }
-
-      return false;
-    });
-
-    this.teacherData = filteredData;
-  }
- }
 }

@@ -11,8 +11,10 @@ export class AppServiceService {
 
   constructor(private http: HttpClient) {
     if(environment.production == false){
+      this.ROOT_URL = 'http://localhost:4200'
       this.ROOT_URL = 'test'
     }else{
+      this.ROOT_URL = 'http://localhost:8080'
       this.ROOT_URL = 'api'
     }
   }
