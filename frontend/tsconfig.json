@@ -5,11 +5,7 @@
   To learn more about this file see: https://angular.io/config/solution-tsconfig.
 */
 {
-  
   "files": [],
-  "angularCompilerOptions": {
-    "strictTemplates": true
-  },
   "references": [
     {
       "path": "./tsconfig.app.json"

@@ -2,11 +2,11 @@ import { Selector } from 'testcafe';
 process.env.NODE_ENV = "test";
 
 fixture`Testing Student UI`
-    .page`http://localhost:4401`
+    .page`http://localhost:4401/student`
 
 test('Testing add students', async t => {
 
-   // await t.navigateTo("/dbinitialize");
+    await t.navigateTo("/dbinitialize");
 
     await t.navigateTo("/addStudent");
     await t.typeText("#student-id", "999999");
